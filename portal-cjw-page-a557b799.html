@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彩经网 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafaf9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #1c1917;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 720px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.02);
+            padding: 3rem 2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.75rem;
+            }
+            .page {
+                padding: 2rem 1.25rem;
+                border-radius: 16px;
+            }
+        }
+
+        /* 标题层级 */
+        h1 {
+            font-weight: 600;
+            font-size: 2rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.3rem;
+            color: #0c0a09;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #78716c;
+            margin-bottom: 2.2rem;
+            border-bottom: 1px solid #e7e5e4;
+            padding-bottom: 1rem;
+        }
+
+        h2 {
+            font-weight: 500;
+            font-size: 1.3rem;
+            margin-top: 2.4rem;
+            margin-bottom: 1rem;
+            color: #292524;
+            letter-spacing: -0.01em;
+            border-left: 3px solid #d6d3d1;
+            padding-left: 0.75rem;
+        }
+
+        h3 {
+            font-weight: 500;
+            font-size: 1.05rem;
+            margin-top: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: #44403c;
+        }
+
+        p, li {
+            font-size: 0.95rem;
+            color: #3f3f46;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px dotted #b7c9f0;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        a:hover {
+            color: #1e40af;
+            border-bottom: 1px solid #1e40af;
+        }
+
+        /* 目录感卡片网格 */
+        .index-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.8rem 0 0.5rem;
+        }
+
+        .index-card {
+            background: #f5f5f4;
+            border-radius: 14px;
+            padding: 1.2rem 1rem 1rem;
+            transition: background 0.15s, transform 0.1s;
+            border: 1px solid #e7e5e4;
+        }
+
+        .index-card:hover {
+            background: #efeee6;
+            transform: translateY(-1px);
+        }
+
+        .index-card .emoji {
+            display: block;
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .index-card .label {
+            font-weight: 550;
+            font-size: 0.95rem;
+            color: #292524;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .index-card .desc {
+            font-size: 0.8rem;
+            color: #78716c;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 500px) {
+            .index-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 说明区 & 提示区 */
+        .info-block {
+            background: #faf8f5;
+            border-radius: 14px;
+            padding: 1.2rem 1.4rem;
+            margin: 1.8rem 0 1.2rem;
+            border-left: 4px solid #d6d3d1;
+        }
+
+        .info-block p {
+            margin-bottom: 0.25rem;
+        }
+
+        .tip-block {
+            background: #f1f5f9;
+            border-radius: 14px;
+            padding: 1rem 1.4rem;
+            margin: 1.4rem 0 1rem;
+            border: 1px solid #dee4ed;
+        }
+
+        .tip-block p {
+            font-size: 0.9rem;
+            color: #334155;
+            margin-bottom: 0.2rem;
+        }
+
+        .tip-block .tip-label {
+            font-weight: 550;
+            color: #1e293b;
+            display: inline-block;
+            margin-right: 0.3rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e7e5e4;
+            margin: 2rem 0 1.2rem;
+        }
+
+        .faq-mini {
+            list-style: none;
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .faq-mini li {
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed #e7e5e4;
+            font-size: 0.9rem;
+        }
+
+        .faq-mini li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-mini strong {
+            font-weight: 550;
+            color: #1c1917;
+            margin-right: 0.4rem;
+        }
+
+        .footer-note {
+            margin-top: 2.4rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e7e5e4;
+            font-size: 0.85rem;
+            color: #78716c;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <h1>彩经网 · 知识库</h1>
+    <div class="subhead">从内容出发的整理索引与说明</div>
+
+    <p>
+        这是一个围绕「<a href="https://portal-cjw.com">彩经网</a>」所涵盖主题搭建的静态信息页。我们不追求堆砌术语，而是将常见的知识节点、信息来源与使用场景做一次平实梳理，方便初次接触的人快速理解这个领域的内容结构和边界。
+    </p>
+
+    <!-- 目录感布局：四个卡片 -->
+    <div class="index-grid">
+        <div class="index-card">
+            <span class="emoji">📘</span>
+            <span class="label">术语与概念</span>
+            <span class="desc">基本定义、分类与常见缩写</span>
+        </div>
+        <div class="index-card">
+            <span class="emoji">📊</span>
+            <span class="label">数据分析</span>
+            <span class="desc">指标解读、统计口径与参考区间</span>
+        </div>
+        <div class="index-card">
+            <span class="emoji">🔍</span>
+            <span class="label">信息源指引</span>
+            <span class="desc">公开资料、工具与合规查询渠道</span>
+        </div>
+        <div class="index-card">
+            <span class="emoji">⚙️</span>
+            <span class="label">使用场景</span>
+            <span class="desc">研究、参考与日常信息获取</span>
+        </div>
+    </div>
+
+    <h2>主题内容说明</h2>
+    <p>
+        「彩经网」相关内容主要围绕彩票领域的知识整理、历史数据与资讯聚合。这里的“知识”并非投注建议或预测，而是指对规则、术语、概率原理以及公开统计方法的记录与梳理。许多用户会将其当作一个信息参考起点，用来理解基本概念或查阅术语解释。
+    </p>
+    <p>
+        如果你刚刚接触这个领域，建议从术语部分开始，逐步了解常见的分类逻辑与数据呈现方式。已有的公开文档和索引可以帮助你节省自行搜索的时间，但所有信息仍应以官方发布为准。
+    </p>
+
+    <!-- 说明区 -->
+    <div class="info-block">
+        <p><strong>说明</strong> · 本页所涉及的内容均来自公开可查的资料与常识性整理，不构成任何形式的操作指南或保证。数据与规则可能随时间调整，请留意时效性。</p>
+    </div>
+
+    <h2>常见信息维度</h2>
+    <ul style="margin-left: 1.2rem; padding-left: 0.2rem; list-style: disc; color: #3f3f46;">
+        <li>玩法结构：不同彩种的基础规则与中奖条件</li>
+        <li>历史开奖：公开的号码序列与基本统计（频率、分布）</li>
+        <li>术语释义：例如“和值”“跨度”“AC值”等常用词汇说明</li>
+        <li>资讯动态：行业政策、公益金公告等相关新闻</li>
+    </ul>
+    <p style="margin-top: 0.6rem;">
+        这些维度彼此独立又可以交叉参考。例如理解了一个术语之后，再去看对应的统计数据会更清晰。
+    </p>
+
+    <!-- 提示区 -->
+    <div class="tip-block">
+        <p><span class="tip-label">📌 提示</span> 使用任何知识库时都建议保持核实习惯。不同平台对同一概念的定义可能存在细微差别，以权威机构发布的文件为准。</p>
+        <p style="margin-top: 0.3rem;">另外，<a href="https://portal-cjw.com">彩经网</a> 本身是一个信息聚合与索引站点，不直接提供购彩服务。</p>
+    </div>
+
+    <h2>FAQ 摘要</h2>
+    <ul class="faq-mini">
+        <li><strong>Q：</strong> 这里的内容是最新的吗？<br><strong>A：</strong> 知识库会尽量根据公开信息定期更新，但无法保证实时同步。重要信息建议交叉验证。</li>
+        <li><strong>Q：</strong> 我可以引用这里的定义吗？<br><strong>A：</strong> 可以引用基础定义和通用概念，但涉及具体规则或数据时请核对官方来源。</li>
+        <li><strong>Q：</strong> 为什么没有预测类内容？<br><strong>A：</strong> 本知识库定位为信息整理与说明，不涉及任何形式的预测或建议。</li>
+    </ul>
+
+    <hr>
+    <h2>相关信息</h2>
+    <p>
+        如果你想进一步了解彩票相关的公益金分配、社会责任报告或法律法规，可以访问财政部或民政部等官方网站。对于术语与数据层面，<a href="https://portal-cjw.com">彩经网</a> 提供了索引式的导航，方便你按类别查找已有资料。
+    </p>
+    <p>
+        另外，一些行业论坛和公开数据平台也会发布统计年鉴或分析报告，可作为拓展阅读。所有外部信息请自行甄别其权威性与时效性。
+    </p>
+
+    <div class="footer-note">
+        彩经网知识库 · 内容基于公开资料整理 · 仅供参考
+    </div>
+</div>
+</body>
+</html>
