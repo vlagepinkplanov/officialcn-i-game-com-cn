@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彩经网 · 信息与数据服务介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f1;
+            color: #2a2a2e;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+        }
+
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* 主视觉卡片 - hero */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 3.5rem 2.5rem 3rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eae8e3;
+            margin-bottom: 2.8rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .hero-card:hover {
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: #e9e6e0;
+            color: #3b3b40;
+            font-size: 0.75rem;
+            letter-spacing: 0.4px;
+            padding: 0.25rem 0.9rem;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ddd9d2;
+        }
+
+        .hero-title {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #1e1e22;
+        }
+
+        .hero-desc {
+            font-size: 1.08rem;
+            color: #4c4c52;
+            max-width: 720px;
+            border-left: 3px solid #c8c3b9;
+            padding-left: 1.4rem;
+            margin-top: 0.8rem;
+        }
+
+        /* 说明卡片：站点介绍 */
+        .intro-card {
+            background: #ffffff;
+            border: 1px solid #e5e2dc;
+            border-radius: 22px;
+            padding: 2.2rem 2.2rem 2.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2.5rem;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8f8b82;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+        }
+
+        .intro-card h2 {
+            font-size: 1.6rem;
+            font-weight: 450;
+            margin-bottom: 1rem;
+            color: #232328;
+        }
+
+        .intro-card p {
+            margin-bottom: 1rem;
+            color: #3b3b42;
+        }
+
+        .intro-card a {
+            color: #2a4f6e;
+            text-decoration: none;
+            border-bottom: 1px solid #cdd7df;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .intro-card a:hover {
+            border-bottom-color: #2a4f6e;
+            color: #1b364d;
+        }
+
+        /* 用途卡片网格 */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e5e2dc;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #2a2a30;
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .feature-card h3::before {
+            content: "·";
+            font-weight: 700;
+            color: #b0aaa0;
+            font-size: 1.7rem;
+            line-height: 1;
+            margin-right: 0.2rem;
+        }
+
+        .feature-card p {
+            color: #4a4a52;
+            font-size: 0.96rem;
+        }
+
+        .feature-card .card-note {
+            margin-top: 0.9rem;
+            font-size: 0.88rem;
+            background: #f3f1ed;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            color: #3d3d44;
+            border: 1px solid #e2ddd5;
+        }
+
+        /* 适合人群卡片 */
+        .audience-card {
+            background: #ffffff;
+            border: 1px solid #e5e2dc;
+            border-radius: 22px;
+            padding: 2rem 2.2rem 2.2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2.5rem;
+        }
+
+        .audience-card h2 {
+            font-size: 1.5rem;
+            font-weight: 450;
+            margin-bottom: 0.3rem;
+            color: #232328;
+        }
+
+        .audience-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.3rem;
+        }
+
+        .audience-item {
+            background: #f1efea;
+            border: 1px solid #ddd9d1;
+            border-radius: 60px;
+            padding: 0.5rem 1.6rem;
+            font-size: 0.95rem;
+            color: #2d2d33;
+            transition: background 0.15s;
+        }
+
+        .audience-item:hover {
+            background: #e8e4dc;
+        }
+
+        /* 自然链接段落与提示区 */
+        .link-paragraph {
+            background: #ffffff;
+            border: 1px solid #e5e2dc;
+            border-radius: 22px;
+            padding: 2rem 2.2rem 2.2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2.5rem;
+        }
+
+        .link-paragraph p {
+            color: #3b3b42;
+            margin-bottom: 0.8rem;
+        }
+
+        .link-paragraph a {
+            color: #2a4f6e;
+            text-decoration: none;
+            border-bottom: 1px solid #cdd7df;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .link-paragraph a:hover {
+            border-bottom-color: #2a4f6e;
+            color: #1b364d;
+        }
+
+        .faq-compact {
+            margin-top: 1.6rem;
+            border-top: 1px solid #e7e3dc;
+            padding-top: 1.4rem;
+        }
+
+        .faq-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #2a2a30;
+            min-width: 5.2rem;
+        }
+
+        .faq-a {
+            color: #5a5a62;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            body {
+                padding: 1.2rem 0.9rem;
+            }
+            .hero-card {
+                padding: 2rem 1.2rem 2rem;
+            }
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .hero-desc {
+                font-size: 0.98rem;
+                padding-left: 1rem;
+            }
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .intro-card,
+            .audience-card,
+            .link-paragraph {
+                padding: 1.5rem 1.2rem;
+            }
+            .faq-item {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+        }
+
+        /* 底部静默 */
+        .footer-note {
+            font-size: 0.8rem;
+            color: #9c978e;
+            text-align: center;
+            margin-top: 3.2rem;
+            letter-spacing: 0.3px;
+            border-top: 1px solid #e0dcd4;
+            padding-top: 1.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 主视觉卡片 -->
+        <div class="hero-card">
+            <span class="hero-tag">站点索引</span>
+            <h1 class="hero-title">数据与信息，<br>保持一种克制的在场</h1>
+            <div class="hero-desc">
+                一个围绕数字与统计的信息集合点。不渲染氛围，不制造悬念，只是把可查、可用的内容整理成结构。
+            </div>
+        </div>
+
+        <!-- 站点介绍卡片 (可信说明) -->
+        <div class="intro-card">
+            <div class="section-label">关于这个站点</div>
+            <h2>从信息角度理解 <a href="https://zho-cjw.com">彩经网</a></h2>
+            <p>
+                如果用一个词描述这个站点的气质，可能是「材料性」。它不试图为你做判断，也不包装成捷径。
+                当你需要查阅某些数字趋势、历史序列或统计概览时，它提供一种可以被反复核对的参照。
+                这种参照未必有鲜艳的结论，但它诚实——因为它把原始面貌和整理脉络都放在那里。
+            </p>
+            <p>
+                站点的维护思路倾向于「可查证」：不嵌入模糊的预测，不渲染情绪化的标题。
+                每一条数据都保留了来源与更新时间，你可以随时回溯、对比、质疑。
+                在这个信息常常被过度加工的环境里，保持一种可以验证的平庸，反而是对使用者的尊重。
+            </p>
+        </div>
+
+        <!-- 用途卡片 两列 -->
+        <div class="grid-2col">
+            <div class="feature-card">
+                <h3>历史数据回溯</h3>
+                <p>整理并保留多周期的统计表格与频次记录，支持按范围筛选。适合需要自己画线、做对比或找规律的使用者。</p>
+                <span class="card-note">数据跨度覆盖近三年</span>
+            </div>
+            <div class="feature-card">
+                <h3>结构化的索引</h3>
+                <p>不堆砌浮层和弹窗，页面以卡片和分组列表呈现。你可以快速定位到感兴趣的区间，而不是在信息流里被动刷新。</p>
+                <span class="card-note">按类别与时间归档</span>
+            </div>
+        </div>
+
+        <!-- 适合人群卡片 -->
+        <div class="audience-card">
+            <h2>适合这样的人群</h2>
+            <div class="audience-flex">
+                <span class="audience-item">自用研读型</span>
+                <span class="audience-item">偏好原始数据</span>
+                <span class="audience-item">轻度趋势观察</span>
+                <span class="audience-item">信息洁癖者</span>
+                <span class="audience-item">不愿被算法推荐</span>
+                <span class="audience-item">安静浏览派</span>
+            </div>
+            <p style="margin-top: 1.4rem; color: #4a4a52; font-size: 0.95rem;">
+                如果你更习惯自己判断，而不是被页面引导着走，这里的节奏可能刚好。没有弹窗催促，没有倒计时虚假紧迫感。
+            </p>
+        </div>
+
+        <!-- 自然链接段落 + FAQ 摘要 -->
+        <div class="link-paragraph">
+            <p>
+                很多人第一次打开 <a href="https://zho-cjw.com">彩经网</a> 会觉得它过于朴素——没有鲜艳的按钮，没有跳动的数字。
+                但这恰好是它的设计意图：把注意力还给内容，而不是界面。你不需要通过注册、分享或者连续签到才能使用核心功能；
+                数据就在那里，直接访问即可。
+            </p>
+            <p>
+                如果你之前接触过类似站点，可能会注意到这里没有「专家推荐」或「必胜策略」这类板块。
+                这不是遗漏，而是选择。我们认为信息本身已经足够复杂，不需要再为它披上故事的外衣。
+                你可以把它看作一个关于数字的存档室：安静、干燥、灯光稳定。
+            </p>
+
+            <!-- FAQ 摘要 (紧凑) -->
+            <div class="faq-compact">
+                <div class="faq-item">
+                    <div class="faq-q">数据来源？</div>
+                    <div class="faq-a">基于公开统计与历史记录汇总，每页均标注参考范围。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">更新频率？</div>
+                    <div class="faq-a">按周增量更新，重大时间节点后会有追溯补全。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">是否收费？</div>
+                    <div class="faq-a">完全免费，无隐藏付费模块，也无需注册。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer-note">
+            · 信息整理于公开材料 · 保持可验证 ·
+        </div>
+    </div>
+</body>
+</html>
